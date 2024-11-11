@@ -32,9 +32,13 @@ const App = () => {
 							<i className='fab fa-github text-2xl mr-2'></i>
 							<span className='font-semibold'>Olexandr Bielinskiy</span>
 						</div>
-						<button className='bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded'>
+						<a
+							href='https://github.com'
+							target='_blank'
+							className='bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded inline-block'
+						>
 							Follow
-						</button>
+						</a>
 					</div>
 					{/* Instagram */}
 					<div className='bg-white shadow-md rounded-lg p-4 w-full'>
@@ -42,9 +46,13 @@ const App = () => {
 							<i className='fab fa-instagram text-2xl mr-2'></i>
 							<span className='font-semibold'>Instagram</span>
 						</div>
-						<button className='bg-blue-500 text-white font-semibold py-2 px-4 rounded'>
+						<a
+							href='https://instagram.com'
+							target='_blank'
+							className='bg-blue-500 text-white font-semibold py-2 px-4 rounded inline-block'
+						>
 							Follow
-						</button>
+						</a>
 					</div>
 					{/* Twitter */}
 					<div className='bg-blue-100 shadow-md rounded-lg p-4 w-full'>
@@ -55,19 +63,27 @@ const App = () => {
 								<p className='text-sm text-gray-600'>@a4ivi4</p>
 							</div>
 						</div>
-						<button className='bg-blue-500 text-white font-semibold py-2 px-4 rounded'>
+						<a
+							href='https://twitter.com'
+							target='_blank'
+							className='bg-blue-500 text-white font-semibold py-2 px-4 rounded inline-block'
+						>
 							Follow
-						</button>
+						</a>
 					</div>
 					{/* YouTube */}
-					<div className='bg-red-100 shadow-md rounded-lg p-4 w-full'>
+					<div className='bg-red-100 shadow-md rounded-lg p-4 w-full flex flex-col justify-between'>
 						<div className='flex items-center mb-4'>
 							<i className='fab fa-youtube text-2xl mr-2'></i>
 							<span className='font-semibold'>Olexandr Bielinskiy</span>
 						</div>
-						<button className='bg-red-500 text-white font-semibold py-2 px-4 rounded'>
-							Subscribe 19
-						</button>
+						<a
+							href='https://youtube.com'
+							target='_blank'
+							className='bg-red-500 text-white font-semibold py-2 px-4 rounded inline-block w-max'
+						>
+							Subscribe
+						</a>
 					</div>
 				</div>
 				{/* Projects */}
