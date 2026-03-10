@@ -1,0 +1,19 @@
+node_modules/
+dist/
+
+# Certbot data (contains private keys)
+certbot/conf/
+certbot/www/
+certbot/renew.log
+
+# Logs
+*.log
+
+# Env
+.env
+.env.*
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
