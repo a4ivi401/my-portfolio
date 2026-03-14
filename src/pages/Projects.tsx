@@ -9,25 +9,64 @@ const content = {
   ru: {
     title: "Проекты",
     items: [
-      { title: "Проект 1", description: "Веб-приложение для управления задачами", image: project1 },
-      { title: "Проект 2", description: "Мобильное приложение для фитнеса", image: project2 },
-      { title: "Проект 3", description: "Дизайн-система для стартапа", image: project3 },
+      {
+        title: "Кочан",
+        description: "Магазин цифровых товаров и VPN.",
+        image: project1,
+        href: "https://t.me/cochanshop",
+      },
+      {
+        title: "ClipCollector",
+        description: "Телеграм-бот для скачивания коротких видео из TikTok и YouTube.",
+        image: project2,
+      },
+      {
+        title: "CodaView",
+        description: "Приложение для совместного просмотра видео.",
+        image: project3,
+      },
     ],
   },
   uk: {
     title: "Проєкти",
     items: [
-      { title: "Проєкт 1", description: "Вебзастосунок для керування задачами", image: project1 },
-      { title: "Проєкт 2", description: "Мобільний застосунок для фітнесу", image: project2 },
-      { title: "Проєкт 3", description: "Дизайн-система для стартапу", image: project3 },
+      {
+        title: "Кочан",
+        description: "Магазин цифрових товарів і VPN.",
+        image: project1,
+        href: "https://t.me/cochanshop",
+      },
+      {
+        title: "ClipCollector",
+        description: "Телеграм-бот для завантаження коротких відео з TikTok та YouTube.",
+        image: project2,
+      },
+      {
+        title: "CodaView",
+        description: "Застосунок для спільного перегляду відео.",
+        image: project3,
+      },
     ],
   },
   en: {
     title: "Projects",
     items: [
-      { title: "Project 1", description: "Task management web application", image: project1 },
-      { title: "Project 2", description: "Mobile fitness application", image: project2 },
-      { title: "Project 3", description: "Design system for a startup", image: project3 },
+      {
+        title: "Cochan",
+        description: "Digital goods and VPN store.",
+        image: project1,
+        href: "https://t.me/cochanshop",
+      },
+      {
+        title: "ClipCollector",
+        description: "Telegram bot for downloading short videos from TikTok and YouTube.",
+        image: project2,
+      },
+      {
+        title: "CodaView",
+        description: "Co-watching app for shared video viewing.",
+        image: project3,
+      },
     ],
   },
 } as const;

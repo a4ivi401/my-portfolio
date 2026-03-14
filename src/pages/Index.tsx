@@ -71,18 +71,18 @@ const Index = () => {
 	}, [playlistUrl])
 
 	return (
-		<div className='min-h-screen bg-background transition-colors py-8 px-4 pb-28 md:pb-8 md:px-8 flex items-center justify-center'>
+		<div className='min-h-screen bg-background transition-colors py-6 px-4 pb-28 sm:px-6 md:py-8 md:pb-8 md:px-8 flex items-center justify-center'>
 			<div className='w-full max-w-[1100px] grid grid-cols-[1fr] md:grid-cols-[300px_1fr_70px] gap-4'>
 				<motion.div
 					{...card(0)}
-					className='bento-card bg-card p-6 flex flex-col justify-between min-h-[600px]'
+					className='bento-card bg-card p-5 sm:p-6 flex flex-col gap-6 md:justify-between min-h-[360px] sm:min-h-[420px] md:min-h-[600px]'
 				>
 					<div>
 						<motion.div
 							initial={{ scale: 0.8, opacity: 0 }}
 							animate={{ scale: 1, opacity: 1 }}
 							transition={{ duration: 0.6, delay: 0.2 }}
-							className='w-40 h-40 rounded-full bg-muted mx-auto md:mx-0 overflow-hidden mb-6'
+							className='w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-muted mx-auto md:mx-0 overflow-hidden mb-5 sm:mb-6'
 						>
 							<img
 								src={portrait}
@@ -97,134 +97,123 @@ const Index = () => {
 							{t.about}
 						</p>
 					</div>
-					<p className='text-muted-foreground text-xs mt-8'>© 2026 a4ivi4</p>
+					<p className='text-muted-foreground text-xs md:mt-8'>© 2026 a4ivi4</p>
 				</motion.div>
 
 				<div className='flex flex-col gap-4'>
-					<div className='grid grid-cols-2 gap-4'>
-						<motion.div
+					<div className='grid grid-cols-2 gap-3 sm:gap-4'>
+						<motion.a
 							{...card(0.1)}
-							className='bento-card bg-card p-5 flex flex-col justify-between min-h-[140px]'
+							href='https://github.com/a4ivi401'
+							className='bento-card bg-card p-4 sm:p-5 flex flex-col items-center justify-center md:items-start md:justify-between min-h-[96px] md:min-h-[140px] text-center md:text-left'
 						>
-							<Github className='w-10 h-10 text-card-foreground' />
-							<div>
+							<Github className='w-9 h-9 text-card-foreground' />
+							<div className='hidden md:block'>
 								<p className='font-heading font-bold text-card-foreground mt-3'>
 									GitHub
 								</p>
-								<a
-									href='https://github.com/a4ivi401'
-									className='inline-block mt-2 px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full hover:opacity-80 transition-opacity'
-								>
+								<span className='inline-flex items-center justify-center mt-2 w-full sm:w-auto px-4 sm:px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full'>
 									{t.link}
-								</a>
+								</span>
 							</div>
-						</motion.div>
-						<motion.div
+							<span className='sr-only'>GitHub</span>
+						</motion.a>
+						<motion.a
 							{...card(0.15)}
-							className='bento-card bg-card p-5 min-h-[140px] flex flex-col justify-between'
+							href='mailto:a4ivi4.mail@gmail.com'
+							className='bento-card bg-card p-4 sm:p-5 min-h-[96px] md:min-h-[140px] flex flex-col items-center justify-center md:items-start md:justify-between text-center md:text-left'
 						>
 							<Mail className='w-8 h-8 text-card-foreground' />
-							<div>
+							<div className='hidden md:block'>
 								<p className='font-heading font-bold text-card-foreground mt-3'>
 									{t.emailLabel}
 								</p>
-								<a
-									href='mailto:a4ivi4.mail@gmail.com'
-									className='inline-block mt-2 px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full hover:opacity-80 transition-opacity'
-								>
+								<span className='inline-flex items-center justify-center mt-2 w-full sm:w-auto px-4 sm:px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full'>
 									{t.link}
-								</a>
+								</span>
 							</div>
-						</motion.div>
-					</div>
-
-					<motion.div
-						{...card(0.2)}
-						className='bento-card bg-card p-5 flex items-center justify-between min-h-[60px]'
-					>
-						<div className='flex items-center gap-3'>
-							<Youtube className='w-8 h-8 text-[hsl(0,80%,50%)]' />
-							<span className='font-heading font-bold text-card-foreground'>
-								YouTube
-							</span>
-						</div>
-						<a
+							<span className='sr-only'>{t.emailLabel}</span>
+						</motion.a>
+						<motion.a
+							{...card(0.2)}
 							href='https://www.youtube.com/@itsa4ivi4'
-							className='inline-block px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full hover:opacity-80 transition-opacity'
+							className='bento-card bg-card p-4 sm:p-5 flex items-center justify-center md:justify-between md:flex-col md:items-start min-h-[96px] md:min-h-[140px]'
 						>
-							{t.link}
-						</a>
-					</motion.div>
-
-					<div className='grid grid-cols-3 gap-4'>
-						<motion.div
+							<div className='flex items-center gap-3 md:gap-4'>
+								<Youtube className='w-8 h-8 text-[hsl(0,80%,50%)]' />
+								<span className='hidden md:inline font-heading font-bold text-card-foreground'>
+									YouTube
+								</span>
+							</div>
+							<span className='hidden md:inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full'>
+								{t.link}
+							</span>
+							<span className='sr-only'>YouTube</span>
+						</motion.a>
+						<motion.a
 							{...card(0.25)}
-							className='bento-card bg-card p-5 row-span-2 min-h-[280px] flex flex-col gap-4'
+							href={playlistUrl}
+							className='bento-card bg-card p-4 sm:p-5 flex items-center justify-center md:items-start md:justify-between md:flex-col min-h-[96px] md:min-h-[140px]'
 						>
-							<div className='flex items-center gap-3'>
-								<Music className='w-8 h-8 text-[hsl(141,70%,40%)]' />
+							<Music className='w-9 h-9 text-[hsl(141,70%,40%)]' />
+							<div className='hidden md:flex w-full flex-col gap-3'>
 								<p className='font-heading font-bold text-card-foreground'>
 									Spotify Playlist
 								</p>
+								<div className='rounded-[12px] overflow-hidden border border-border bg-muted/20 h-28'>
+									{playlistCover ? (
+										<img
+											src={playlistCover}
+											alt='Spotify playlist cover'
+											className='w-full h-full object-cover'
+											loading='lazy'
+										/>
+									) : (
+										<div className='w-full h-full flex items-center justify-center text-muted-foreground text-sm'>
+											Loading cover...
+										</div>
+									)}
+								</div>
+								<span className='inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full'>
+									Open in Spotify
+								</span>
 							</div>
-							<a
-								href={playlistUrl}
-								className='flex-1 rounded-[14px] overflow-hidden border border-border bg-muted/20 block hover:opacity-90 transition-opacity'
-							>
-								{playlistCover ? (
-									<img
-										src={playlistCover}
-										alt='Spotify playlist cover'
-										className='w-full h-full object-cover'
-										loading='lazy'
-									/>
-								) : (
-									<div className='w-full h-full flex items-center justify-center text-muted-foreground text-sm'>
-										Loading cover...
-									</div>
-								)}
-							</a>
-							<a
-								href={playlistUrl}
-								className='inline-block px-6 py-2 bg-card-foreground text-card text-sm font-heading font-medium rounded-full hover:opacity-80 transition-opacity'
-							>
-								Open in Spotify
-							</a>
-						</motion.div>
+							<span className='sr-only'>Spotify Playlist</span>
+						</motion.a>
+					</div>
 
-						<div className='col-span-2 grid grid-cols-2 gap-4'>
-							{[
-								{ icon: Youtube, bg: 'hsl(0,70%,80%)', delay: 0.3 },
-								{
-									icon: Instagram,
-									bg: 'hsl(330,60%,82%)',
-									delay: 0.35,
-									href: 'https://instagram.com/belinskiy.inst',
-								},
-								{
-									icon: Send,
-									bg: 'hsl(195,80%,70%)',
-									delay: 0.4,
-									href: 'https://t.me/a4ivi4inside',
-								},
-								{
-									icon: AtSign,
-									bg: 'hsl(0,0%,20%)',
-									delay: 0.45,
-									href: 'https://www.threads.net/@belinskiy.inst',
-								},
-							].map(({ icon: Icon, bg, delay, href }, i) => (
-								<motion.a
-									key={i}
-									{...card(delay)}
-									href={href || 'https://www.youtube.com/@itsa4ivi4'}
-									className='bento-card flex items-center justify-center min-h-[130px] hover:scale-[1.03] transition-transform'
-									style={{ backgroundColor: bg }}
-								>
-									<Icon className='w-12 h-12 text-primary-foreground' />
-								</motion.a>
-							))}
-						</div>
+					<div className='grid grid-cols-2 gap-4'>
+						{[
+							{ icon: Youtube, bg: 'hsl(0,70%,80%)', delay: 0.3 },
+							{
+								icon: Instagram,
+								bg: 'hsl(330,60%,82%)',
+								delay: 0.35,
+								href: 'https://instagram.com/belinskiy.inst',
+							},
+							{
+								icon: Send,
+								bg: 'hsl(195,80%,70%)',
+								delay: 0.4,
+								href: 'https://t.me/a4ivi4inside',
+							},
+							{
+								icon: AtSign,
+								bg: 'hsl(0,0%,20%)',
+								delay: 0.45,
+								href: 'https://www.threads.net/@belinskiy.inst',
+							},
+						].map(({ icon: Icon, bg, delay, href }, i) => (
+							<motion.a
+								key={i}
+								{...card(delay)}
+								href={href || 'https://www.youtube.com/@itsa4ivi4'}
+								className='bento-card flex items-center justify-center min-h-[110px] sm:min-h-[130px] hover:scale-[1.03] transition-transform'
+								style={{ backgroundColor: bg }}
+							>
+								<Icon className='w-12 h-12 text-primary-foreground' />
+							</motion.a>
+						))}
 					</div>
 				</div>
 
