@@ -1,113 +1,126 @@
-import { motion } from "framer-motion";
-import SideNav from "@/components/SideNav";
-import project1 from "@/assets/project1.png";
-import project2 from "@/assets/project2.png";
-import project3 from "@/assets/project3.png";
-import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion"
+import { ArrowLeft, ExternalLink, Github } from "lucide-react"
+import { Link } from "react-router-dom"
 
-const content = {
-  ru: {
-    title: "Проекты",
-    items: [
-      {
-        title: "Кочан",
-        description: "Магазин цифровых товаров и VPN.",
-        image: project1,
-        href: "https://t.me/cochanshop",
-      },
-      {
-        title: "ClipCollector",
-        description: "Телеграм-бот для скачивания коротких видео из TikTok и YouTube.",
-        image: project2,
-      },
-      {
-        title: "CodaView",
-        description: "Приложение для совместного просмотра видео.",
-        image: project3,
-      },
-    ],
-  },
-  uk: {
-    title: "Проєкти",
-    items: [
-      {
-        title: "Кочан",
-        description: "Магазин цифрових товарів і VPN.",
-        image: project1,
-        href: "https://t.me/cochanshop",
-      },
-      {
-        title: "ClipCollector",
-        description: "Телеграм-бот для завантаження коротких відео з TikTok та YouTube.",
-        image: project2,
-      },
-      {
-        title: "CodaView",
-        description: "Застосунок для спільного перегляду відео.",
-        image: project3,
-      },
-    ],
-  },
-  en: {
-    title: "Projects",
-    items: [
-      {
-        title: "Cochan",
-        description: "Digital goods and VPN store.",
-        image: project1,
-        href: "https://t.me/cochanshop",
-      },
-      {
-        title: "ClipCollector",
-        description: "Telegram bot for downloading short videos from TikTok and YouTube.",
-        image: project2,
-      },
-      {
-        title: "CodaView",
-        description: "Co-watching app for shared video viewing.",
-        image: project3,
-      },
-    ],
-  },
-} as const;
+const cardVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+}
 
 const Projects = () => {
-  const { language } = useLanguage();
-  const t = content[language];
-
   return (
-    <div className="min-h-screen bg-background transition-colors py-8 px-4 pb-28 md:pb-8 md:px-8 flex items-start justify-center">
-      <div className="w-full max-w-[1100px] grid grid-cols-[1fr] md:grid-cols-[1fr_70px] gap-4">
-        <div>
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <h1 className="text-4xl font-heading font-bold text-card-foreground mb-8">{t.title}</h1>
-          </motion.div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center p-4 sm:p-8">
+      <div className="w-full max-w-[860px] mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors px-4 py-2 bg-card rounded-full shadow-sm hover:shadow-md">
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {t.items.map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (i + 1) }}
-                className="bento-card bg-card overflow-hidden"
-              >
-                <div className="aspect-video bg-muted overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-5">
-                  <h2 className="font-heading font-bold text-card-foreground text-lg">{project.title}</h2>
-                  <p className="text-muted-foreground text-sm mt-1">{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
+      <div className="w-full max-w-[860px] grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Project: Cochan */}
+        <motion.div
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bento-card col-span-1 md:col-span-2 p-8 flex flex-col min-h-[240px] relative overflow-hidden group"
+        >
+          <div className="flex justify-between items-start mb-4 relative z-10">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">Кочан</h2>
+              <p className="text-muted-foreground max-w-md">Ecosystem with shop for digital goods and a VPN service.</p>
+            </div>
           </div>
-        </div>
 
-        <SideNav />
+          <div className="mt-auto flex flex-wrap gap-3 relative z-10">
+            <a href="https://t.me/cochanshopbot" className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-secondary/80 transition-colors">
+              Cochan Shop
+              <ExternalLink className="w-4 h-4" />
+            </a>
+            <a href="https://t.me/cochanvpnbot" className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-secondary/80 transition-colors">
+              Cochan VPN
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+
+          {/* Decorative element */}
+          <div className="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors pointer-events-none" />
+        </motion.div>
+
+        {/* Project: ClipCollector */}
+        <motion.a
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          href="https://github.com/a4ivi401/ClipCollector"
+          target="_blank"
+          className="bento-card p-6 flex flex-col justify-between min-h-[220px] group hover:bg-secondary/10"
+        >
+          <div>
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold">ClipCollector</h3>
+              <Github className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </div>
+            <p className="text-muted-foreground text-sm">Telegram bot for downloading short videos from TikTok and YouTube.</p>
+          </div>
+          <div className="mt-6 flex gap-2">
+            <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">Python</span>
+            <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">Telegram API</span>
+          </div>
+        </motion.a>
+
+        {/* Project: Budget Tracker */}
+        <motion.a
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          href="#"
+          target="_blank"
+          className="bento-card p-6 flex flex-col justify-between min-h-[220px] group hover:bg-secondary/10"
+        >
+          <div>
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold">Budget Tracker Bot</h3>
+              <Github className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </div>
+            <p className="text-muted-foreground text-sm">Telegram bot to manage and track personal budget and daily expenses easily.</p>
+          </div>
+          <div className="mt-6 flex gap-2">
+            <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">Python</span>
+            <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">PostgreSQL</span>
+          </div>
+        </motion.a>
+
+        {/* Project: Wolf3D Clone */}
+        <motion.a
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          href="https://github.com/a4ivi401/Wolf3D"
+          target="_blank"
+          className="bento-card col-span-1 md:col-span-2 p-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between min-h-[160px] group hover:bg-secondary/10"
+        >
+          <div>
+            <h3 className="text-2xl font-bold mb-2">Wolfenstein 3D Clone</h3>
+            <p className="text-muted-foreground max-w-md">A raycasting engine and 3D game inspired by classic Wolfenstein 3D.</p>
+            <div className="mt-4 flex gap-2">
+              <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">C#</span>
+              <span className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">Raylib</span>
+            </div>
+          </div>
+
+          <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+            <Github className="w-6 h-6" />
+          </div>
+        </motion.a>
+
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

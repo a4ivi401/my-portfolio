@@ -1,113 +1,80 @@
-import { motion } from "framer-motion";
-import SideNav from "@/components/SideNav";
-import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion"
+import { ArrowLeft } from "lucide-react"
+import { Link } from "react-router-dom"
 
-const content = {
-  ru: {
-    title: "Опыт",
-    items: [
-      {
-        period: "Декабрь 2025 — настоящее время",
-        role: "FullStack Developer",
-        company: "Кочан",
-        description: "Разработка и поддержка веб-сервисов, интерфейсов и серверной логики.",
-      },
-      {
-        period: "Август 2024 — декабрь 2025",
-        role: "Специалист поддержки",
-        company: "Кочан",
-        description: "Поддержка пользователей и решение технических вопросов.",
-      },
-      {
-        period: "2022 — август 2024",
-        role: "Python Developer",
-        company: "Freelance",
-        description: "Разработка скриптов и сервисов на Python для автоматизации.",
-      },
-    ],
+const timelineData = [
+  {
+    year: "Dec 2025 — Present",
+    role: "FullStack Developer",
+    company: "at Кочан",
+    description: "Разработка и поддержка веб-сервисов, интерфейсов и серверной логики.",
   },
-  uk: {
-    title: "Досвід",
-    items: [
-      {
-        period: "Грудень 2025 — дотепер",
-        role: "FullStack Developer",
-        company: "Кочан",
-        description: "Розробка та підтримка вебсервісів, інтерфейсів і серверної логіки.",
-      },
-      {
-        period: "Серпень 2024 — грудень 2025",
-        role: "Фахівець підтримки",
-        company: "Кочан",
-        description: "Підтримка користувачів і вирішення технічних питань.",
-      },
-      {
-        period: "2022 — серпень 2024",
-        role: "Python Developer",
-        company: "Freelance",
-        description: "Розробка скриптів і сервісів на Python для автоматизації.",
-      },
-    ],
+  {
+    year: "Aug 2024 — Dec 2025",
+    role: "Support Specialist",
+    company: "at Онлайн-Школа Сила Голосу",
+    description: "Поддержка пользователей и решение технических вопросов.",
   },
-  en: {
-    title: "Experience",
-    items: [
-      {
-        period: "December 2025 — present",
-        role: "FullStack Developer",
-        company: "Cochan",
-        description: "Development and maintenance of web services, UI, and server-side logic.",
-      },
-      {
-        period: "August 2024 — December 2025",
-        role: "Support Specialist",
-        company: "Cochan",
-        description: "User support and resolving technical issues.",
-      },
-      {
-        period: "2022 — August 2024",
-        role: "Python Developer",
-        company: "Freelance",
-        description: "Building Python scripts and services for automation.",
-      },
-    ],
+  {
+    year: "2022 — Aug 2024",
+    role: "Python Developer",
+    company: "at Freelance",
+    description: "Разработка скриптов и сервисов на Python для автоматизации.",
   },
-} as const;
+]
 
 const Experience = () => {
-  const { language } = useLanguage();
-  const t = content[language];
-
   return (
-    <div className="min-h-screen bg-background transition-colors py-8 px-4 pb-28 md:pb-8 md:px-8 flex items-start justify-center">
-      <div className="w-full max-w-[1100px] grid grid-cols-[1fr] md:grid-cols-[1fr_70px] gap-4">
-        <div>
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <h1 className="text-4xl font-heading font-bold text-card-foreground mb-8">{t.title}</h1>
-          </motion.div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center p-4 sm:p-8">
+      <div className="w-full max-w-[860px] mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors px-4 py-2 bg-card rounded-full shadow-sm hover:shadow-md">
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+      </div>
 
-          <div className="flex flex-col gap-4">
-            {t.items.map((item, i) => (
+      <div className="w-full max-w-[860px]">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold mb-12 tracking-tight"
+        >
+          Experience
+        </motion.h1>
+
+        <div className="relative pl-24 sm:pl-32">
+          {/* Timeline Line */}
+          <div className="absolute left-[47px] sm:left-[63px] top-4 bottom-4 w-[2px] bg-[#8B5CF6]/30"></div>
+
+          <div className="flex flex-col gap-8">
+            {timelineData.map((item, index) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (i + 1) }}
-                className="bento-card bg-card p-6"
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative"
               >
-                <p className="text-xs text-muted-foreground font-heading">{item.period}</p>
-                <h2 className="font-heading font-bold text-card-foreground text-lg mt-1">{item.role}</h2>
-                <p className="text-sm text-muted-foreground">{item.company}</p>
-                <p className="text-sm text-card-foreground mt-3">{item.description}</p>
+                {/* Timeline Circle */}
+                <div className="absolute -left-[72px] sm:-left-[88px] top-2 w-14 h-14 bg-[#8B5CF6] rounded-full flex items-center justify-center font-bold text-white text-xs sm:text-sm text-center p-2 leading-tight shadow-[0_0_15px_rgba(139,92,246,0.4)] z-10">
+                  {item.year.split(" — ")[0]}
+                </div>
+
+                {/* Content Card */}
+                <div className="bento-card p-6 sm:p-8 group hover:bg-secondary/10 transition-colors border border-white/5">
+                  <h3 className="text-xl font-bold">{item.role}</h3>
+                  <p className="text-[#8B5CF6] font-medium text-sm mt-1 mb-4">{item.company}</p>
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
-
-        <SideNav />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience
